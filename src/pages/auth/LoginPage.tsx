@@ -3,6 +3,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Input } from '../../components/ui/Input';
 import { Button } from '../../components/ui/Button';
 import { Link } from '../../components/ui/Link';
+import { getAuthErrorMessage, validateEmail } from '../../lib/auth-utils';
 
 export function LoginPage() {
   const { signIn } = useAuth();
@@ -14,12 +15,23 @@ export function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+
+    if (!validateEmail(email)) {
+      setError('Please enter a valid email address');
+      return;
+    }
+
+    if (!password) {
+      setError('Please enter your password');
+      return;
+    }
+
     setLoading(true);
 
     const { error } = await signIn(email, password);
 
     if (error) {
-      setError(error.message);
+      setError(getAuthErrorMessage(error.message));
       setLoading(false);
     } else {
       window.location.href = '/';

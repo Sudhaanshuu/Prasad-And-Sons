@@ -3,6 +3,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Input } from '../../components/ui/Input';
 import { Button } from '../../components/ui/Button';
 import { Link } from '../../components/ui/Link';
+import { getAuthErrorMessage, validateEmail, validatePassword } from '../../lib/auth-utils';
 
 export function SignupPage() {
   const { signUp } = useAuth();
@@ -18,13 +19,24 @@ export function SignupPage() {
     e.preventDefault();
     setError('');
 
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
+    if (!fullName.trim()) {
+      setError('Please enter your full name');
       return;
     }
 
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters');
+    if (!validateEmail(email)) {
+      setError('Please enter a valid email address');
+      return;
+    }
+
+    const passwordValidation = validatePassword(password);
+    if (!passwordValidation.valid) {
+      setError(passwordValidation.message || 'Invalid password');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
       return;
     }
 
@@ -33,7 +45,7 @@ export function SignupPage() {
     const { error } = await signUp(email, password, fullName);
 
     if (error) {
-      setError(error.message);
+      setError(getAuthErrorMessage(error.message));
       setLoading(false);
     } else {
       setSuccess(true);
