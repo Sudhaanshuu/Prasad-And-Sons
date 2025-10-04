@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AuthProvider } from './contexts/AuthContext';
+import { CartProvider } from './contexts/CartContext';
 import { matchRoute } from './lib/router';
 
 function App() {
@@ -52,7 +53,9 @@ function App() {
 
   return (
     <AuthProvider>
-      <Component />
+      <CartProvider>
+        <Component />
+      </CartProvider>
     </AuthProvider>
   );
 }

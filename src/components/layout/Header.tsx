@@ -1,9 +1,11 @@
 import { ShoppingCart, User, LogOut, LayoutDashboard, Package } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
+import { useCart } from '../../contexts/CartContext';
 import { Link } from '../ui/Link';
 
 export function Header() {
   const { user, profile, signOut, isAdmin } = useAuth();
+  const { cartCount } = useCart();
 
   const handleSignOut = async () => {
     await signOut();
@@ -42,9 +44,11 @@ export function Header() {
             {user && (
               <Link href="/cart" className="relative p-2 text-gray-700 hover:text-blue-600 transition-colors">
                 <ShoppingCart className="h-6 w-6" />
-                <span className="absolute top-0 right-0 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  0
-                </span>
+                {cartCount > 0 && (
+                  <span className="absolute top-0 right-0 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {cartCount}
+                  </span>
+                )}
               </Link>
             )}
 
