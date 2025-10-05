@@ -35,15 +35,15 @@ export function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/products">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 flex items-center space-x-2">
+                <button className="bg-white text-blue-600 hover:bg-gray-100 font-medium px-6 py-3 text-lg rounded-lg transition-colors flex items-center space-x-2">
                   <span>Shop Now</span>
                   <ArrowRight className="h-5 w-5" />
-                </Button>
+                </button>
               </Link>
               <Link href="/categories">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                <button className="border-2 border-white text-white hover:bg-white hover:text-blue-700 font-medium px-6 py-3 text-lg rounded-lg transition-colors">
                   Browse Categories
-                </Button>
+                </button>
               </Link>
             </div>
           </div>
@@ -125,9 +125,9 @@ export function HomePage() {
             Create an account today and get exclusive access to deals and discounts
           </p>
           <Link href="/signup">
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+            <button className="bg-white text-blue-600 hover:bg-gray-100 font-medium px-6 py-3 text-lg rounded-lg transition-colors">
               Create Free Account
-            </Button>
+            </button>
           </Link>
         </div>
       </section>

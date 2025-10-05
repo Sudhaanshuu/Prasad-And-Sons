@@ -6,9 +6,11 @@ import { ResetPasswordPage } from '../pages/auth/ResetPasswordPage';
 import { VerifyEmailPage } from '../pages/auth/VerifyEmailPage';
 import { ProductsPage } from '../pages/products/ProductsPage';
 import { ProductDetailPage } from '../pages/products/ProductDetailPage';
+import { CategoriesPage } from '../pages/products/CategoriesPage';
 import { CartPage } from '../pages/cart/CartPage';
 import { CheckoutPage } from '../pages/cart/CheckoutPage';
 import { OrdersPage } from '../pages/orders/OrdersPage';
+import { ProfilePage } from '../pages/profile/ProfilePage';
 
 export interface Route {
   path: string;
@@ -25,9 +27,11 @@ export const routes: Route[] = [
   { path: '/verify-email', component: VerifyEmailPage },
   { path: '/products', component: ProductsPage },
   { path: '/products/:slug', component: ProductDetailPage, pattern: /^\/products\/[^/]+$/ },
+  { path: '/categories', component: CategoriesPage },
   { path: '/cart', component: CartPage },
   { path: '/checkout', component: CheckoutPage },
   { path: '/orders', component: OrdersPage },
+  { path: '/profile', component: ProfilePage },
 ];
 
 export function matchRoute(pathname: string): Route | undefined {
