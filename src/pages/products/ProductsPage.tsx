@@ -16,6 +16,7 @@ export function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [priceRange, setPriceRange] = useState<{ min: number; max: number }>({ min: 0, max: 10000 });
   const [showFilters, setShowFilters] = useState(false);
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     loadCategories();
@@ -28,11 +29,13 @@ export function ProductsPage() {
       setCategories(data);
     } catch (error) {
       console.error('Error loading categories:', error);
+      setError('Failed to load categories');
     }
   };
 
   const loadProducts = async () => {
     setLoading(true);
+    setError('');
     try {
       const filters: any = {};
       if (search) filters.search = search;
@@ -42,8 +45,9 @@ export function ProductsPage() {
 
       const data = await getProducts(filters);
       setProducts(data);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error loading products:', error);
+      setError(error?.message || 'Failed to load products');
     } finally {
       setLoading(false);
     }
@@ -139,6 +143,12 @@ export function ProductsPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {error && (
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+            {error}
+          </div>
+        )}
+
         {loading ? (
           <div className="text-center py-12">
             <div className="inline-block h-8 w-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
