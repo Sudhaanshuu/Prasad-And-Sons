@@ -1,55 +1,48 @@
-import { ShoppingCart, User, LogOut, LayoutDashboard, Sparkles } from 'lucide-react';
+import { ShoppingCart, User, LogOut, Menu, X } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCart } from '../../contexts/CartContext';
 import { Link } from '../ui/Link';
+import { useState } from 'react';
 
 export function Header() {
-  const { user, profile, signOut, isAdmin } = useAuth();
+  const { user, profile, signOut } = useAuth();
   const { cartCount } = useCart();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSignOut = async () => {
     await signOut();
   };
 
   return (
-    <header className="bg-white/80 backdrop-blur-lg border-b border-primary-100 sticky top-0 z-50 shadow-sm">
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="bg-gradient-purple p-2 rounded-xl shadow-glow group-hover:scale-110 transition-transform duration-300">
-              <Sparkles className="h-7 w-7 text-white" />
+          <Link href="/" className="flex items-center space-x-3">
+            <div className="text-2xl font-black text-dark-900">
+              <span className="text-primary-600">NU</span> REPUBLIC
             </div>
-            <span className="text-2xl font-bold bg-gradient-purple bg-clip-text text-transparent">
-              Prasad and Sons
-            </span>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-1">
-            <Link href="/products" className="px-4 py-2 text-dark-700 hover:text-primary-600 font-medium transition-all duration-300 rounded-lg hover:bg-primary-50">
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link href="/products" className="text-dark-700 hover:text-primary-600 font-semibold transition-colors">
               Products
             </Link>
-            <Link href="/categories" className="px-4 py-2 text-dark-700 hover:text-primary-600 font-medium transition-all duration-300 rounded-lg hover:bg-primary-50">
+            <Link href="/categories" className="text-dark-700 hover:text-primary-600 font-semibold transition-colors">
               Categories
             </Link>
             {user && (
-              <Link href="/orders" className="px-4 py-2 text-dark-700 hover:text-primary-600 font-medium transition-all duration-300 rounded-lg hover:bg-primary-50">
+              <Link href="/orders" className="text-dark-700 hover:text-primary-600 font-semibold transition-colors">
                 My Orders
-              </Link>
-            )}
-            {isAdmin && (
-              <Link href="/admin" className="px-4 py-2 text-dark-700 hover:text-primary-600 font-medium transition-all duration-300 rounded-lg hover:bg-primary-50 flex items-center space-x-2">
-                <LayoutDashboard className="h-4 w-4" />
-                <span>Admin</span>
               </Link>
             )}
           </nav>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-4">
             {user && (
-              <Link href="/cart" className="relative p-3 text-dark-700 hover:text-primary-600 transition-all duration-300 rounded-xl hover:bg-primary-50 group">
-                <ShoppingCart className="h-6 w-6 group-hover:scale-110 transition-transform" />
+              <Link href="/cart" className="relative p-2 text-dark-700 hover:text-primary-600 transition-colors">
+                <ShoppingCart className="h-6 w-6" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-gradient-purple text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center shadow-glow animate-pulse">
+                  <span className="absolute -top-1 -right-1 bg-primary-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
@@ -57,42 +50,87 @@ export function Header() {
             )}
 
             {user ? (
-              <div className="flex items-center space-x-2">
-                <Link href="/profile" className="flex items-center space-x-2 px-4 py-2 rounded-xl hover:bg-primary-50 transition-all duration-300 group">
-                  <div className="bg-gradient-purple p-1.5 rounded-lg group-hover:scale-110 transition-transform">
-                    <User className="h-4 w-4 text-white" />
-                  </div>
-                  <span className="text-sm font-semibold text-dark-800 hidden md:block">
+              <div className="hidden md:flex items-center space-x-3">
+                <Link href="/profile" className="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                  <User className="h-5 w-5 text-dark-700" />
+                  <span className="text-sm font-semibold text-dark-900">
                     {profile?.full_name || 'Profile'}
                   </span>
                 </Link>
                 <button
                   onClick={handleSignOut}
-                  className="p-3 text-dark-600 hover:text-red-600 transition-all duration-300 rounded-xl hover:bg-red-50"
+                  className="p-2 text-dark-700 hover:text-primary-600 transition-colors"
                   title="Sign out"
                 >
                   <LogOut className="h-5 w-5" />
                 </button>
               </div>
             ) : (
-              <div className="flex items-center space-x-3">
+              <div className="hidden md:flex items-center space-x-3">
                 <Link
                   href="/login"
-                  className="text-dark-700 hover:text-primary-600 font-semibold transition-all duration-300 px-4 py-2"
+                  className="text-dark-700 hover:text-primary-600 font-semibold transition-colors px-4 py-2"
                 >
                   Login
                 </Link>
                 <Link
                   href="/signup"
-                  className="bg-gradient-purple text-white px-6 py-2.5 rounded-xl hover:shadow-glow transition-all duration-300 font-semibold transform hover:scale-105"
+                  className="bg-primary-600 text-white px-6 py-2.5 rounded-lg hover:bg-primary-700 transition-colors font-semibold"
                 >
                   Sign Up
                 </Link>
               </div>
             )}
+
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 text-dark-700"
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
         </div>
       </div>
+
+      {mobileMenuOpen && (
+        <div className="md:hidden border-t border-gray-200 bg-white">
+          <div className="px-4 py-4 space-y-3">
+            <Link href="/products" className="block text-dark-700 hover:text-primary-600 font-semibold py-2">
+              Products
+            </Link>
+            <Link href="/categories" className="block text-dark-700 hover:text-primary-600 font-semibold py-2">
+              Categories
+            </Link>
+            {user && (
+              <Link href="/orders" className="block text-dark-700 hover:text-primary-600 font-semibold py-2">
+                My Orders
+              </Link>
+            )}
+            {user ? (
+              <>
+                <Link href="/profile" className="block text-dark-700 hover:text-primary-600 font-semibold py-2">
+                  Profile
+                </Link>
+                <button
+                  onClick={handleSignOut}
+                  className="block w-full text-left text-dark-700 hover:text-primary-600 font-semibold py-2"
+                >
+                  Sign Out
+                </button>
+              </>
+            ) : (
+              <>
+                <Link href="/login" className="block text-dark-700 hover:text-primary-600 font-semibold py-2">
+                  Login
+                </Link>
+                <Link href="/signup" className="block bg-primary-600 text-white text-center px-6 py-2.5 rounded-lg hover:bg-primary-700 transition-colors font-semibold">
+                  Sign Up
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

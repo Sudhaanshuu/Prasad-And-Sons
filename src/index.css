@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.product-slider .swiper-button-next,
+.product-slider .swiper-button-prev {
+  color: #ef4444;
+  background: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-slider .swiper-button-next:after,
+.product-slider .swiper-button-prev:after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.product-slider .swiper-button-next:hover,
+.product-slider .swiper-button-prev:hover {
+  background: #ef4444;
+  color: white;
+}
+
+.product-slider .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #dc2626;
+  opacity: 0.3;
+}
+
+.product-slider .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #dc2626;
+}
