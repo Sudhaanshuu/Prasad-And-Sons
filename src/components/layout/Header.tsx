@@ -19,7 +19,7 @@ export function Header() {
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center space-x-3">
             <div className="text-2xl font-black text-dark-900">
-              <span className="text-primary-600">NU</span> REPUBLIC
+              Prasad<span className="text-primary-600"> & </span>Son's
             </div>
           </Link>
 
