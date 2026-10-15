@@ -9,7 +9,7 @@ A modern, type-safe web application powered by React, Supabase, and a sleek Tail
 
 ## ✨ Features
 
-*   ⚡ **Blazing-Fast Development**: Leverage Vite for an incredibly fast development server and build process.
+*   ⚡ **Blazing-Fast Development**: Leverage Vite for an incredibly fast development server and build process
 *   🔐 **Secure & Scalable Backend**: Powered by Supabase for authentication, database, and real-time capabilities, enhanced with custom PLpgSQL logic.
 *   🎨 **Responsive & Elegant UI**: Built with React and styled with Tailwind CSS for a modern, mobile-first user experience.
 *   🛡️ **Type-Safe Codebase**: Developed entirely in TypeScript, ensuring a robust, maintainable, and error-resistant application.
