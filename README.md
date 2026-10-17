@@ -36,7 +36,7 @@ Ensure you have the following installed:
     cd Prasad-And-Sons
     ```
 
-2.  **Install Dependencies**
+2.  **Install Dependencies List**
 
     ```sh
     npm install
