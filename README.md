@@ -1,6 +1,6 @@
 # 🛠️ Prasad-And-Sons
 
-A modern, type-safe web application powered by React, Supabase, and a sleek Tailwind CSS interface.
+A modern type-safe web application powered by React, Supabase, and a sleek Tailwind CSS interface.
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue) ![License](https://img.shields.io/badge/license-No%20License-red) ![Stars](https://img.shields.io/github/stars/Prasad-And-Sons/Prasad-And-Sons?style=social) ![Forks](https://img.shields.io/github/forks/Prasad-And-Sons/Prasad-And-Sons?style=social)
 
