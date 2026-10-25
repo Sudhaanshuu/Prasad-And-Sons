@@ -13,7 +13,7 @@ A modern type-safe web application powered by React, Supabase, and a sleek Tailw
 *   🔐 **Secure & Scalable Backend**: Powered by Supabase for authentication, database, and real-time capabilities, enhanced with custom PLpgSQL logic.
 *   🎨 **Responsive & Elegant UI**: Built with React and styled with Tailwind CSS for a modern, mobile-first user experience.
 *   🛡️ **Type-Safe Codebase**: Developed entirely in TypeScript, ensuring a robust, maintainable, and error-resistant application.
-*   🔄 **Real-time Data**: Experience dynamic content updates with Supabase's real-time subscriptions.
+*   🔄 **Real-time Data**: Experience dynamic content updates with Supabase's real-time subscriptions
 
 
 ## ⚙️ Installation Guide
