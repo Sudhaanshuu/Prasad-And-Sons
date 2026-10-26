@@ -18,7 +18,7 @@ A modern type-safe web application powered by React, Supabase, and a sleek Tailw
 
 ## ⚙️ Installation Guide
 
-Follow these steps to get Prasad-And-Sons up and running on your local machine.
+Follow these steps to get Prasad-And-Sons up and running on your local machine
 
 ### Prerequisites
 
